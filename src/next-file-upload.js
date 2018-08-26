@@ -25,9 +25,11 @@
       xhr.setRequestHeader(key, value);
     });
 
+    //send data:
     xhr.open('POST', inUrl, true);
     xhr.send(formData);
 
+    //response:
     return new Promise(function (resolve, reject) {
       //onload:
       xhr.onload = function () {
