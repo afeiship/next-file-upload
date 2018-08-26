@@ -2,11 +2,12 @@
 
   var global = global || this || window || Function('return this')();
   var nx = global.nx || require('next-js-core2');
+  var DEFAULT_HEADERS = {};
 
   nx.fileUpload = function (inUrl, inData, inOptions) {
     var xhr = new XMLHttpRequest();
     var formData = new FormData();
-    var headders = inOptions.headders || {};
+    var options = inOptions || {};
 
     //Build file ajax data:
     nx.each(inData, function (key, item) {
@@ -14,7 +15,7 @@
     });
 
     //set headers:
-    nx.each(headders, function (key, value) {
+    nx.each(options.headers, function (key, value) {
       xhr.setRequestHeader(key, value);
     });
 
