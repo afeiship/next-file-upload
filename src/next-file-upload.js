@@ -6,18 +6,11 @@
   nx.fileUpload = function (inUrl, inData, inOptions) {
     var xhr = new XMLHttpRequest();
     var formData = new FormData();
-    var name = inOptions.name || 'file';
     var headders = inOptions.headders || {};
 
     //Build file ajax data:
     nx.each(inData, function (key, item) {
-      if ('files' !== key) {
-        formData.append(key, item);
-      } else {
-        nx.each(inData.files, function (_, file) {
-          formData.append(name, file);
-        });
-      }
+      formData.append(key, item);
     });
 
     //set headers:
