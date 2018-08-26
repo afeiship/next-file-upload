@@ -2,7 +2,6 @@
 
   var global = global || this || window || Function('return this')();
   var nx = global.nx || require('next-js-core2');
-  var DEFAULT_HEADERS = {};
 
   nx.fileUpload = function (inUrl, inData, inOptions) {
     var xhr = new XMLHttpRequest();
