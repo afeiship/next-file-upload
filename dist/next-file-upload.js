@@ -7,6 +7,7 @@
     var xhr = new XMLHttpRequest();
     var formData = new FormData();
     var name = inOptions.name || 'file';
+    var headders = inOptions.headders || {};
 
     //Build file ajax data:
     nx.each(inData, function (key, item) {
@@ -17,6 +18,11 @@
           formData.append(name, file);
         });
       }
+    });
+
+    //set headers:
+    nx.each(headders, function (key, value) {
+      xhr.setRequestHeader(key, value);
     });
 
     xhr.open('POST', inUrl, true);
