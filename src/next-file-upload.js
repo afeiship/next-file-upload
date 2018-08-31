@@ -13,13 +13,18 @@
       formData.append(key, item);
     });
 
+    // withCredentials
+    xhr.withCredentials = options.withCredentials || false;
+
+    //open data:
+    xhr.open('POST', inUrl, true);
+
     //set headers:
     nx.each(options.headers, function (key, value) {
       xhr.setRequestHeader(key, value);
     });
 
-    //send data:
-    xhr.open('POST', inUrl, true);
+    //send
     xhr.send(formData);
 
     //response:
