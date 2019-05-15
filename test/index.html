@@ -15,7 +15,6 @@
       el.onchange = function(e) {
         var file = e.target.files[0];
         var dataURL = window.URL.createObjectURL(file);
-
         console.log(dataURL);
         console.log(el, el.value);
         console.log(e.target.files);
