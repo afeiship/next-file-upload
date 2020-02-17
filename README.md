@@ -1,12 +1,14 @@
 # next-file-upload
-> Simple xhr for file upload
+> Simple xhr for file upload.
 
 ## installation
 ```bash
-npm install -S afeiship/next-file-upload --registry=https://registry.npm.taobao.org
+npm install -S @feizheng/next-file-upload
 ```
 
 ## usage
 ```js
+import '@feizheng/next-file-upload';
+
 //DOCS here!
 ```

@@ -1,13 +1,15 @@
 /*!
- * name: next-file-upload
- * link: https://github.com/afeiship/next-file-upload
+ * name: @feizheng/next-file-upload
+ * description: Simple xhr for file upload.
+ * url: https://github.com/afeiship/next-file-upload
  * version: 1.0.0
+ * date: 2020-02-17 17:31:24
  * license: MIT
  */
 
 (function() {
   var global = global || this || window || Function('return this')();
-  var nx = global.nx || require('next-js-core2');
+  var nx = global.nx || require('@feizheng/next-js-core2');
   var DEFAULT_OPTIONS = { method: 'POST' };
 
   nx.fileUpload = function(inUrl, inData, inOptions) {
@@ -61,3 +63,5 @@
     module.exports = nx.fileUpload;
   }
 })();
+
+//# sourceMappingURL=next-file-upload.js.map
