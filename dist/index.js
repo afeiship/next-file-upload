@@ -3,7 +3,7 @@
  * description: Simple xhr for file upload.
  * homepage: https://github.com/afeiship/next-file-upload
  * version: 1.0.0
- * date: 2020-11-22 16:38:27
+ * date: 2020-11-22 16:40:57
  * license: MIT
  */
 
