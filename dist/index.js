@@ -1,15 +1,24 @@
-(function() {
+/*!
+ * name: @jswork/next-file-upload
+ * description: Simple xhr for file upload.
+ * homepage: https://github.com/afeiship/next-file-upload
+ * version: 1.0.0
+ * date: 2020-11-22 16:38:27
+ * license: MIT
+ */
+
+(function () {
   var global = global || this || window || Function('return this')();
-  var nx = global.nx || require('@feizheng/next-js-core2');
+  var nx = global.nx || require('@jswork/next');
   var DEFAULT_OPTIONS = { method: 'POST' };
 
-  nx.fileUpload = function(inUrl, inData, inOptions) {
+  nx.fileUpload = function (inUrl, inData, inOptions) {
     var xhr = new XMLHttpRequest();
     var formData = new FormData();
     var options = nx.mix(DEFAULT_OPTIONS, inOptions);
 
     //Build file ajax data:
-    nx.each(inData, function(key, item) {
+    nx.each(inData, function (key, item) {
       formData.append(key, item);
     });
 
@@ -20,7 +29,7 @@
     xhr.open(options.method, inUrl, true);
 
     //set headers:
-    nx.each(options.headers, function(key, value) {
+    nx.each(options.headers, function (key, value) {
       xhr.setRequestHeader(key, value);
     });
 
@@ -28,9 +37,9 @@
     xhr.send(formData);
 
     //response:
-    return new Promise(function(resolve, reject) {
+    return new Promise(function (resolve, reject) {
       //onload:
-      xhr.onload = function() {
+      xhr.onload = function () {
         if (xhr.status === 200) {
           resolve(xhr.response);
         } else {
@@ -44,7 +53,7 @@
       // };
 
       //error:
-      xhr.onerror = function() {
+      xhr.onerror = function () {
         reject(xhr);
       };
     });
