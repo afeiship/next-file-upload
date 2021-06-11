@@ -1,6 +1,6 @@
 {
   "name": "@jswork/next-file-upload",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple xhr for file upload.",
   "homepage": "https://github.com/afeiship/next-file-upload",
   "author": {
