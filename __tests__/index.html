@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload with progress</title>
+  <script src="https://unpkg.com/@jswork/next"></script>
+  <script src="../src/index.js"></script>
+</head>
+
+<body>
+
+  <input type="file" name="" id="file1">
+  <script>
+    document.getElementById("file1").onchange = (ev) => {
+      const file = ev.target.files[0];
+      nx.fileUpload("https://s3.cn-north-1.amazonaws.com.cn/web-s3.saybot.net/azj/teachers/avatar/ac13b6f0-50f3-4e5c-a4dc-073b66448481/gemfile.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20210611T090606Z&X-Amz-SignedHeaders=host&X-Amz-Expires=600&X-Amz-Credential=AKIAPY33Y7ZCLCZ7JXWQ%2F20210611%2Fcn-north-1%2Fs3%2Faws4_request&X-Amz-Signature=1b6a4f72643500215eb49df28d6cc856dc17ca31d05655fca693b749e5b89300", file, {
+        method: 'put'
+      })
+    }
+  </script>
+</body>
+
+</html>
