@@ -3,7 +3,7 @@
   var nx = global.nx || require('@jswork/next');
   var defaults = {
     method: 'POST',
-    headers: { 'Content-Type': 'multipart/form-data' },
+    headers: {},
     onProgress: nx.noop
   };
 
