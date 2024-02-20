@@ -1,64 +1,64 @@
-(function () {
-  var global = global || this || window || Function('return this')();
-  var nx = global.nx || require('@jswork/next');
-  var defaults = {
-    method: 'POST',
-    headers: {},
-    onProgress: nx.noop
-  };
+import nx from '@jswork/next';
 
-  var getBody = function (inData) {
-    if (inData instanceof global.File) return inData;
-    var formData = new FormData();
-    nx.each(inData, function (key, item) {
-      formData.append(key, item);
-    });
-    return formData;
-  };
+const defaults = {
+  method: 'POST',
+  headers: {},
+  onProgress: nx.noop
+};
 
-  nx.fileUpload = function (inUrl, inData, inOptions) {
-    var xhr = new XMLHttpRequest();
-    var body = getBody(inData);
-    var options = nx.mix(defaults, inOptions);
+const getBody = function (inData) {
+  if (inData instanceof File) return inData;
+  var formData = new FormData();
+  nx.each(inData, function (key, item) {
+    formData.append(key, item);
+  });
+  return formData;
+};
 
-    // withCredentials
-    xhr.withCredentials = options.withCredentials || false;
+nx.fileUpload = function (inUrl, inData, inOptions) {
+  var xhr = new XMLHttpRequest();
+  var body = getBody(inData);
+  var options = nx.mix(defaults, inOptions);
 
-    //open data:
-    xhr.open(options.method, inUrl, true);
+  // withCredentials
+  xhr.withCredentials = options.withCredentials || false;
 
-    //set headers:
-    nx.each(options.headers, function (key, value) {
-      xhr.setRequestHeader(key, value);
-    });
+  //open data:
+  xhr.open(options.method, inUrl, true);
 
-    //send
-    xhr.send(body);
+  //set headers:
+  nx.each(options.headers, function (key, value) {
+    xhr.setRequestHeader(key, value);
+  });
 
-    //response:
-    return new Promise(function (resolve, reject) {
-      //onload:
-      xhr.onload = function () {
-        if (xhr.status === 200) {
-          resolve(xhr.response);
-        } else {
-          reject(xhr);
-        }
-      };
+  //send
+  xhr.send(body);
 
-      // show progress:
-      xhr.onprogress = function (inEvent) {
-        options.onProgress(inEvent);
-      };
-
-      //error:
-      xhr.onerror = function () {
+  //response:
+  return new Promise(function (resolve, reject) {
+    //onload:
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        resolve(xhr.response);
+      } else {
         reject(xhr);
-      };
-    });
-  };
+      }
+    };
 
-  if (typeof module !== 'undefined' && module.exports) {
-    module.exports = nx.fileUpload;
-  }
-})();
+    // show progress:
+    xhr.onprogress = function (inEvent) {
+      options.onProgress(inEvent);
+    };
+
+    //error:
+    xhr.onerror = function () {
+      reject(xhr);
+    };
+  });
+};
+
+if (typeof module !== 'undefined' && module.exports && typeof wx === 'undefined') {
+  module.exports = nx.fileUpload;
+}
+
+export default nx.fileUpload;
